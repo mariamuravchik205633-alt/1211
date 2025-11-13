@@ -1,5 +1,6 @@
-from fastapi.testclient import TestClient
 from app.main import app
+from fastapi.testclient import TestClient
+
 
 client = TestClient(app)
 
@@ -18,3 +19,10 @@ def test_toggle():
     r = client.patch("/todos/2")
     assert r.status_code == 200
     assert r.json()["done"] is True
+import os
+import sys
+
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app.main import app
